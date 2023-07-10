@@ -6,7 +6,7 @@
 -->
 <script setup lang='ts'>
 import { computed, h, onMounted } from 'vue'
-import { NButton, useMessage, useNotification } from 'naive-ui'
+import { NButton, NLayout, NLayoutContent, NModal, NTabPane, NTabs, useMessage, useNotification } from 'naive-ui'
 import { useRouter } from 'vue-router'
 import Sider from './sider/index.vue'
 import login from './login.vue'
@@ -42,7 +42,10 @@ const getMobileClass = computed(() => {
 })
 
 const getContainerClass = computed(() => {
-  return ['h-full', { 'pl-[260px]': !isMobile.value && !collapsed.value }]
+  return [
+    'h-full',
+    { 'pl-[260px]': !isMobile.value && !collapsed.value },
+  ]
 })
 
 function handleClick2() {
@@ -81,10 +84,7 @@ if (!needPermission.value)
 </script>
 
 <template>
-  <div
-    class="h-full dark:bg-[#24272e] transition-all"
-    :class="[isMobile ? 'p-0' : 'p-4']"
-  >
+  <div class="h-full dark:bg-[#24272e] transition-all" :class="[isMobile ? 'p-0' : 'p-4']">
     <div class="h-full overflow-hidden" :class="getMobileClass">
       <NLayout class="z-40 transition" :class="getContainerClass" has-sider>
         <Sider />
@@ -95,7 +95,7 @@ if (!needPermission.value)
         </NLayoutContent>
       </NLayout>
     </div>
-    <NModal :show="needPermission" style="width: 90% max-width: 640px">
+    <NModal :show="needPermission" style="width: 90%; max-width: 640px">
       <div class="p-10 bg-white rounded dark:bg-slate-800">
         <div class="space-y-4">
           <NTabs default-value="login" size="large" animated>
