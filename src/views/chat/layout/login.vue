@@ -21,8 +21,8 @@ const loading = ref(false)
 // 表单相关
 const formRef = ref<FormInst | null>(null)
 const userInfo = ref({
-  email: '',
-  passWord: '',
+  email: '1234567890@163.com',
+  passWord: '202390',
 })
 
 const rules: FormRules = {
@@ -124,4 +124,5 @@ function handlePress(event: KeyboardEvent) {
   >
     {{ $t('common.verify') }}
   </NButton>
+  <span style="color: red;">体验账号限时3天,想使用完整功能请注册！</span>
 </template>
